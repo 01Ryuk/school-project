@@ -16,7 +16,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 use Laravel\Sanctum\PersonalAccessToken;
-use Storage;
+// use Storage;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * App\Models\User
@@ -101,6 +102,16 @@ class User extends Authenticatable
 
         return 'gravatar';
     }
+
+//     public function getAvatar(): string
+// {
+//     if ($this->avatar && Storage::disk('public')->exists($this->avatar)) {
+//         return Storage::disk('public')->url($this->avatar);
+//     }
+
+//     return $this->getGravatar(); // fallback to gravatar
+// }
+
 
     public function departments(): BelongsToMany
     {

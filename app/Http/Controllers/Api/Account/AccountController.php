@@ -7,8 +7,10 @@ use App\Http\Requests\Account\DetailsRequest;
 use App\Http\Requests\Account\PasswordRequest;
 use App\Http\Resources\User\UserResource;
 use App\Models\User;
-use Auth;
-use Hash;
+// use Auth;
+// use Hash;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\JsonResponse;
 
 class AccountController extends Controller
