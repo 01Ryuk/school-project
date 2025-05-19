@@ -6,7 +6,9 @@ use App\Models\Ticket;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Str;
+// use Str;
+use Illuminate\Support\Str;
+
 
 class NewTicketReplyFromAgentToUser extends Notification
 {

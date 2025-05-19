@@ -9,7 +9,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use stdClass;
-use Str;
+// use Str;
+use Illuminate\Support\Str;
+
 
 class NewTicketFromAgent extends Notification
 {

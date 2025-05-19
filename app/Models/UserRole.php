@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Route;
+// use Route;
+use Illuminate\Support\Facades\Route;
 
 /**
  * App\Models\UserRole
@@ -102,9 +103,9 @@ class UserRole extends Model
     {
         $controllers = [];
         $permissions = json_decode((string) $this->permissions, true, 512, JSON_THROW_ON_ERROR);
-        foreach (Route::getRoutes()->getIterator() as $route) {
+        foreach (Route::getRoutes() as $route) {
             if (strpos($route->uri, 'api/dashboard') !== false) {
-                $path = str_replace('\\', '.', explode('@', str_replace($route->action['controller'].'\\', '', $route->action['controller']))[0]);
+                $path = str_replace('\\', '.', explode('@', str_replace($route->action['controller'] . '\\', '', $route->action['controller']))[0]);
                 $controllers[$path] = $this->id === 1 ? true : in_array($path, $permissions, true);
             }
         }
