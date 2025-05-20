@@ -3,10 +3,11 @@
 namespace App\Http\Middleware;
 
 use App\Models\User;
-use Auth;
+// use Auth;
 use Closure;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CheckPermission
 {

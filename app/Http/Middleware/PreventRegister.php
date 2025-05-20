@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Setting;
+use App\Models\Setting;  // <-- import your Setting model
 
 class PreventRegister
 {
@@ -17,9 +17,14 @@ class PreventRegister
      */
     public function handle($request, Closure $next)
     {
-        if (!e(Setting::get('app_user_registration') ? true : false)) {
+        // Fetch the setting from database, assuming `key` and `value` columns or adjust accordingly
+        $registrationAllowed = Setting::where('key', 'app_user_registration')->value('value');
+
+        // If value stored as string, convert to boolean explicitly
+        if (!$registrationAllowed || $registrationAllowed == '0' || $registrationAllowed === false) {
             return response()->json(['message' => __('Forbidden')], 403);
         }
+
         return $next($request);
     }
 }
