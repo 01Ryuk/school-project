@@ -15,7 +15,7 @@ class PreventRegister
      * @param  Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         // Fetch the setting from database, assuming `key` and `value` columns or adjust accordingly
         $registrationAllowed = Setting::where('key', 'app_user_registration')->value('value');

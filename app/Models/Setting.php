@@ -121,4 +121,23 @@ class Setting extends Model
         }
         return null;
     }
+
+    // <-- ADD THIS METHOD BELOW
+    /**
+     * Get the value of a setting by key or return default.
+     *
+     * @param string $key
+     * @param mixed|null $default
+     * @return mixed|null
+     */
+    public static function get($key, $default = null)
+    {
+        $setting = self::find($key);
+
+        if ($setting) {
+            return $setting->value;
+        }
+
+        return $default;
+    }
 }
